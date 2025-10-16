@@ -3,7 +3,7 @@
 1) Swagger UI (view-only): [`https://…`](https://goodwintt23-cpu.github.io/project-03-insurance-c4-api/swagger.html?v=1)  
    _Просмотр спецификации онлайн_
 
-2) Открыть в [`Swagger Editor`](https://editor.swagger.io/) (онлайн): [`https://…`]( https://raw.githubusercontent.com/goodwintt23-cpu/project-03-insurance-c4-api/main/api/lucky-api_service_1.0.1_swagger.yaml)
+2) Открыть в [`Swagger Editor`](https://editor.swagger.io/) (онлайн): [`https://…`](https://raw.githubusercontent.com/goodwintt23-cpu/project-03-insurance-c4-api/main/api/lucky-api_service_1.0.1_swagger.yaml)
 > Подсказка: чтобы открыть YAML в Swagger Editor — File → Import URL и вставьте ссылку из п.2
 
 3) Diff правок (PR → Files changed): [`https://…`](https://github.com/goodwintt23-cpu/project-03-insurance-c4-api/pull/1/files)  
