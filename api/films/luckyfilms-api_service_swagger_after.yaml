@@ -1,0 +1,118 @@
+openapi: 3.0.0
+info:
+  title: API сервиса LuckyFilms
+  description: "Коллекция запросов API сервиса. Сервис предоставляет информацию для фильмах о животных и шоу о различных породах животных и правилах ухода за ними"
+  version: 1.1.0
+  termsOfService: "https://lucky.com/terms"
+  contact:
+    name: "LuckyFilms API"
+    url: "https://lucky.com/info"
+    email: "LuckyFilms@lucky.com"
+  license:
+    name: "license 1.0.1 Lucky"
+    url: "https://lucky.com/license"
+servers:
+- url: https://83cd17f7-f5cb-4df9-b3df-ed2f8fc1c524.mock.pstmn.io
+  description: Lucky Mock
+tags:
+- name: Films Server API
+paths:
+ /films:
+    get:
+      tags:
+      - Films Server API
+      summary: Детальное описание фильма по id
+      description: |
+        Просмотр детального описания фильма по id. Для просмотра доступны фильмы с идентификатором 101, 102, 103, 104, 105.
+      operationId: filmDescription
+      parameters:
+      - name: id
+        in: query
+        description: "идентификатор фильма (101, 102, 103, 104)"
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: integer
+          example: 101
+      responses:
+        "200":
+          description: детальное описание фильма
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/inline_response_200_1'
+        "400":
+          description: bad input parameter
+        "404":
+          description: not found
+        "500":
+          description: internal server error
+        "502":
+          description: bad gateway
+components:
+  schemas:
+    filmslist_details:
+      required:
+      - duration
+      - yearOfIssue
+      type: object
+      properties:
+        yearOfIssue:
+          type: string
+          description: год выпуска
+          example: "2022"
+        duration:
+          type: integer
+          description: продолжительность (в минутах)
+          example: 90
+    inline_response_200_1:
+      required:
+      - description
+      - details
+      - genre
+      - id
+      - imageUrl
+      - recordUrl
+      - title
+      - type
+      type: object
+      properties:
+        id:
+          type: integer
+          description: идентификатор
+          example: 104
+        type:
+          type: string
+          description: тип контента
+          example: film
+        title:
+          type: string
+          description: название
+          example: Путешествие корги
+        description:
+          type: string
+          description: короткое описание
+          example: "Корги Булочка отправляется на поиски места, откуда он родом. На его пути его ждут различные приключения и новые друзья."
+        imageUrl:
+          type: string
+          description: постер
+          format: url
+          example: https://lucky.imagestorage.ru/сorgi.img
+        recordUrl:
+          type: string
+          description: url видео-файла
+          format: url
+          example: https://lucky.recordstorage.ru/Corgisjourney.mov
+        genre:
+          type: array
+          description: жанр
+          items:
+            type: string
+            example: "family, adventure"
+        recommended:
+          type: boolean
+          description: рекомендованный контент
+          example: true
+        details:
+          $ref: '#/components/schemas/filmslist_details'
